@@ -60,8 +60,31 @@ The data represented above gives an overview on the specific percentages of men 
 
 #Inferential
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+Mfish <- fisher.test(table1)
+Mfish
+```
+  
+The fisher test is an important test that provided us with the necessary p-value. The p-value recorded is 3e-07. The number turns out to be a very small amount which means that these results are more unlikely to occur by chance. The odds ratio is also given and is recorded to be 0.21.
 
 
+```{r}
+effect <- Mfish$p.value/(Mfish$p.value +1)
+effectivenessM = Mfish$estimate/(Mfish$estimate +1)*100
+print(effectivenessM)
+```
+
+```{r}
+low=(Mfish$conf.int[1]/(Mfish$conf.int[1] +1))*100
+hi=(Mfish$conf.int[2]/(Mfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+The effectiveness is now used for the covid-19 vaccine within Males. If the result comes out to be above 50%, that means the vaccine becomes effective. Looking at our result, we can conclude that the vaccine is effective for men when trying not to contract covid-19. The odds ratio can also show how effective the vaccine is. Our collected odds ration is 17.
 
 
 ## Females
@@ -96,8 +119,32 @@ The numerical results shows specific percentages for females that received covid
 
 
 #Inferential
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+Ffish <- fisher.test(table1)
+Ffish
+```
+  
+The fishers test shown above provided the required p-value which is 3e-07. This number came out to be a very small amount which proves that these results are unlikely to occur by chance. We can also see that the null hypothesis was rejected in favor of the alternative. Our recorded odds ratio is at 0.21.
 
 
+```{r}
+effect <- Ffish$p.value/(Ffish$p.value +1)
+effectivenessF = Ffish$estimate/(Ffish$estimate +1)*100
+print(effectivenessF)
+```
+
+```{r}
+low=(Ffish$conf.int[1]/(Ffish$conf.int[1] +1))*100
+hi=(Ffish$conf.int[2]/(Ffish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+  
+If the effectiveness is above 50%, than the vaccine works, however for our data collected for the women, we can see that our effectiveness data is below 50%. This proves that the vaccine was ineffective.
 
 ## LGBTQ
 ###Barplot
@@ -148,6 +195,12 @@ low=(gaysfish$conf.int[1]/(gaysfish$conf.int[1] +1))*100
 hi=(gaysfish$conf.int[2]/(gaysfish$conf.int[2] +1))*100
 options(digits=2)
 ```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+  
+As stated before, if the effectiveness is above 50%, the vaccine is in effect; however our data resulted with an amount far below 50% showing that the vaccine does little to no effect for the LGBTQ community. This data proves that the vaccine won't work against covid for this group and is advise to avoid taking the vaccine. The odds ratio came to a very low number, 17, also showing the negative attributes of the vaccine.
+
+
 ## Druggies
 ###Barplot
 ```{r}
@@ -200,7 +253,13 @@ hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+The results provided by the effectiveness came out to a very low number, below the 50% mark. We can With this data we can see how ineffective the vaccine is for drug users. The odds ratio also came out to be a low number, 17, proving how useless the vaccine has become for drug users.
 
 
 # Overall Results and Conclusions
+  
+Looking over 
+
 
