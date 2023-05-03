@@ -13,11 +13,15 @@ date: "`r Sys.Date()`"
 require(tidyverse)
 require(tigerstats)
 require(forcats)
-FinalDat <-read.csv(file="finalFall2022.csv",header=TRUE)
-#recode to remove the annoying "X" from the dataframe
-FinalData <- FinalDat  %>% select(-one_of("X"))
+FinalData <-read.csv(file="finalFall2022.csv",header=TRUE)
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
+#FinalData$infected <- relevel(FinalData$infected,ref="OK")
+M = filter(FinalData, sex =="M")
+F = filter(FinalData, sex =="F")
+gay = filter(FinalData, LGBTQ =="gay")
+Druguser = filter(FinalData, DrugUser =="yes")
 ```
 
 # Introduction
@@ -26,15 +30,99 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 ## Males
 
+Graphical Descriptive Results
+```{r}
+dd2 <- M %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+  
+The graph represented above shows the population of Males in contact with Covid 19 through treatments on either placebo or vaccine. The graph represented above shows more than 60% of men who took placebo got Covid-19 while roughly 30% of men who took the vaccine got covid-19. This difference we see shows how the vaccine has become effective against the disease and gives a positive effect towards men.
+The data presented above gives two graphs, one to represent the total count of infected and the other representing the percentage. The percentage looks to be more effected as it gives a more clear result while the total count gives a small data graph making it barely visable to know the difference.
+
+Numerical Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=M)
+rowPerc(table1)
+colPerc(table1)
+```
+  
+The data represented above gives an overview on the specific percentages of men that got Covid-19 after taking either placebo or the vaccine. Roughly 31.56% of men got covid after taking the vaccine leaving roughly 68.44% of men who had taken placebo get covid. The vaccine looks like it is very affective and works very well for men.
+
+Interential
+
+
+Confidence Interval
+
+
+
 
 ## Females
+
+Barplot
+```{r}
+dd2 <- F %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+  
+The graph's represented above now show the comparison between the two drug types and getting covid-19 afterwords, but with women instead of men. Looking at the data given above, we can see that more women who have taken the vaccine end up with covid-19. It ranges to approximately 50%. Now taking a look at women who have taken placebo, we can see that there are fewer women who have gotten covid, ranging to approximately 42%. After reviewing this data set, we can conclude that women are more at risk of getting covid after recieving the vaccine compared to women taking placebo.
+
+
+Numerical Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=F)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Interential
+
+
+###Confidence Interval
+
 
 
 ## LGBTQ
 
 
+###Barplot
+
+
+###Numerical Results
+
+
+###Interential
+
 
 ## Druggies
+
+###Barplot
+
+
+###Numerical Results
+
+
+###Interential
+
 
 
 # Overall Results and Conclusions
