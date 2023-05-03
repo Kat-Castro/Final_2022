@@ -84,7 +84,7 @@ options(digits=2)
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
-The effectiveness is now used for the covid-19 vaccine within Males. If the result comes out to be above 50%, that means the vaccine becomes effective. Looking at our result, we can conclude that the vaccine is effective for men when trying not to contract covid-19. The odds ratio can also show how effective the vaccine is. Our collected odds ration is 17.
+The effectiveness is now used for the covid-19 vaccine within Males. If the result comes out to be above 50%, that means the vaccine becomes effective. Looking at our result, we can conclude that the vaccine is effective for men when trying not to contract covid-19. The odds ratio can also show how effective the vaccine is. Our collected odds ratio is 68.53436 which shows promising results as it reaches to a higher number.
 
 
 ## Females
@@ -260,6 +260,8 @@ The results provided by the effectiveness came out to a very low number, below t
 
 # Overall Results and Conclusions
   
-Looking over 
+Looking over our data, we can conclude that the vaccine only works for one out of four of our population groups. It seems that men earn a more positive effect when taking the vaccine without having a high chance of getting covid-19 compared to women, LGBTQ, and drug users. Using the two graphs analysis, we can see the comparison of men using placebo and the vaccine when getting covid afterwords. The graphs for the other three groups show a complete opposite result where the vaccine give more negative results while the placebo's results look promising.
+  After the graphs, we can see the numerical results which gives us a more accurate answer on the percentages. The concluded information for men gives the vaccine a more welcoming amount with excellent results where fewer men get covid after taking the vaccine. The other groups are different as they show the drug Placebo to be more promising than the vaccine.
+    Now adding the fisher test, odds ratio, and the effectiveness analysis, we can collect more data on wither the vaccine is better than placebo or the other way around. We can see that for men, the vaccine shows great results but looking at the other groups, we can see that the results came out to be bad. With our collected data we can conclude that the covid-vaccine should not be used as it only positively effects men and does not help in other targeted groups. 
 
 
