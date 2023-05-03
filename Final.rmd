@@ -136,7 +136,7 @@ gaysfish <- fisher.test(table1)
 gaysfish
 ```
   
-
+The concluded p-value is 1.244e-08. This number comes out to a very small value showing that the results concluded are highly unlikely to occur by chance. The Fisher's Test is used to express the odds for Gay individuals which is 0.1617066
 
 ```{r}
 effect <- gaysfish$p.value/(gaysfish$p.value +1)
